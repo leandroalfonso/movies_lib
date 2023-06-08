@@ -1,24 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Contato from './pages/Contato';
+import Home from './pages/Home';
+import Detalhes from './pages/Detalhes'
+import Navbar from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import App from "./App";
-import Home from "./pages/Home";
-import Movie from "./pages/Movie";
-import Search from "./pages/Search";
 
-import "./index.css";
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route element={<App />}>
-          <Route path="/" element={<Home />} />
-          <Route path="movie/:id" element={<Movie />} />
-          <Route path="search" element={<Search />} />
-        </Route>
+        <Route path="/" element={<App />} />
+        <Route path="/detalhes/:id" element={<Detalhes />} />
+        <Route path="/contato" element={<Contato />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
